@@ -1,0 +1,18 @@
+---
+import Layout from './Layout.astro';
+import { format } from 'date-fns';
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <article class="prose lg:prose-xl mx-auto">
+      <h1>{frontmatter.title}</h1>
+      <div class="text-gray-600">
+        {format(new Date(frontmatter.date), 'MMMM d, yyyy')}
+      </div>
+      <slot />
+    </article>
+  </main>
+</Layout>
